@@ -112,10 +112,10 @@ echo "server{
 
         }
 
-}" > /etc/nginx/conf.d/project.sock
+}" > /etc/nginx/conf.d/project.conf
 
-systemctl start uwsgi.service
-systemctl enable uwsgi.service
+systemctl start uwsgi
+systemctl enable uwsgi
 
 #sed -i "s/ALLOWED_HOSTS.*/ALLOWED_HOSTS = [$ips]/" second.txt
 
