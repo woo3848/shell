@@ -23,6 +23,7 @@ python3.6 -m pip install --upgrade pip
 pip3.6 install virtualenvwrapper
 
 firewall-cmd --add-port=80/tcp --zone=public --permanent
+firewall-cmd --add-port=8000/tcp --zone=public --permanent
 firewall-cmd --reload
 echo "export WORKON_HOME=~/Env" >> ~/.bashrc
 echo "export VIRTUALENVWRAPPER_PYTHON=/bin/python3.6" >> ~/.bashrc
