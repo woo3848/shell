@@ -99,7 +99,7 @@ systemctl daemon-reload
 ips=`/sbin/ifconfig | grep '\<inet\>' | sed -n '1p' | tr -s ' ' | cut -d ' ' -f3 | cut -d ':' -f2`
 echo "server{
 
-        listen 8000;
+        listen 80;
 
         server_name $ips;
 
@@ -110,6 +110,8 @@ echo "server{
                 include uwsgi_params;
 
                 uwsgi_pass unix:/run/uwsgi/project.sock;
+                autoindex on;
+                autoindex_exact_size off;
 
         }
 
