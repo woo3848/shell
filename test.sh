@@ -40,15 +40,13 @@ source ~/.bashrc
 mo
 
 git init
-git clone https://github.com/woo3848/djnago_pro.git /usr/local/django
-
-
-
+git remote add origin https://github.com/woo3848/djnago_pro.git
+git clone https://github.com/woo3848/djnago_pro.git /usr/local/django/
 
 yum install -y gcc
 pip3.6 install uwsgi
 
-mkidr -p /etc/uwsgi/sites
+mkdir -p /etc/uwsgi/sites
 
 echo "[uwsgi]
 project = myproject
