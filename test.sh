@@ -34,8 +34,8 @@ workon test
 pip3.6 install django~=2.1.5
 pip3.6 install mysqlclient
 
-mkdir -p /usr/local/django
-alias mo='cd "/usr/local/django"'
+
+alias mo='cd "/usr/local"'
 source ~/.bashrc
 mo
 
@@ -95,7 +95,7 @@ WantedBy=multi-user.target" > /etc/systemd/system/uwsgi.service
 
 systemctl daemon-reload
 
-ips = `/sbin/ifconfig | grep '\<inet\>' | sed -n '1p' | tr -s ' ' | cut -d ' ' -f3 | cut -d ':' -f2`
+ips=`/sbin/ifconfig | grep '\<inet\>' | sed -n '1p' | tr -s ' ' | cut -d ' ' -f3 | cut -d ':' -f2`
 echo "server{
 
         listen 8000;
@@ -114,8 +114,8 @@ echo "server{
 
 }" > /etc/nginx/conf.d/project.sock
 
-systemctl start uwsgi
-systemctl enable uwsgi
+systemctl start uwsgi.service
+systemctl enable uwsgi.service
 
 #sed -i "s/ALLOWED_HOSTS.*/ALLOWED_HOSTS = [$ips]/" second.txt
 
