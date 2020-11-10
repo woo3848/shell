@@ -55,24 +55,24 @@ base = /root
 
 ### Django Settings
 # base directory
-chdir = /usr/local/django/project
+chdir = /usr/local/victolee/djangoTest
 # python path
 home = /root/Env/test/bin/python
 # virtualenv path
 virtualenv = /root/Env/test
 # wsgi.py path
-module = project.wsgi:application
+module = djangoTest.wsgi:application
 
 master = true
 processes = 5
 
 uid = root
-socket = /run/uwsgi/project.sock
+socket = /run/uwsgi/djangoTest.sock
 chown-socket = root:nginx
 chmod-socket = 660
 vacuum = true
 
-logto = /var/log/uwsgi/project.log" > /etc/uwsgi/sites/project.ini
+logto = /var/log/uwsgi/djangoTest.log" > /etc/uwsgi/sites/djangoTest.ini
 
 mkdir -p /var/log/uwsgi
 
