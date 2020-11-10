@@ -16,7 +16,7 @@ systemctl enable nginx
 
 yum install https://repo.ius.io/ius-release-el7.rpm https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm -y
 yum install  python36u python36u-libs python36u-devel python36u-pip python36u-mod_wsgi -y
-yum install git -y
+
 
 python3.6 -m pip install --upgrade pip
 pip3.6 install virtualenvwrapper
