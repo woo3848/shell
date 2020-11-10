@@ -42,7 +42,7 @@ mo
 
 git init
 git remote add origin https://github.com/woo3848/djnago_pro.git
-git clone https://github.com/woo3848/djnago_pro.git /usr/local/django/
+git clone https://github.com/woo3848/djnago_pro.git /usr/local/victolee/
 
 pip3.6 install uwsgi
 
@@ -55,24 +55,24 @@ base = /root
 
 ### Django Settings
 # base directory
-chdir = /usr/local/victolee/djangoTest
+chdir = /usr/local/victolee/project
 # python path
 home = /root/Env/test/bin/python
 # virtualenv path
 virtualenv = /root/Env/test
 # wsgi.py path
-module = djangoTest.wsgi:application
+module = project.wsgi:application
 
 master = true
 processes = 5
 
 uid = root
-socket = /run/uwsgi/djangoTest.sock
+socket = /run/uwsgi/project.sock
 chown-socket = root:nginx
 chmod-socket = 660
 vacuum = true
 
-logto = /var/log/uwsgi/djangoTest.log" > /etc/uwsgi/sites/djangoTest.ini
+logto = /var/log/uwsgi/projcect.log" > /etc/uwsgi/sites/project.ini
 
 mkdir -p /var/log/uwsgi
 
