@@ -1,12 +1,12 @@
 #!/bin/bash
 
-base=$basesearch
+base='$basearch'
 
-echo '[nginx]
+echo "[nginx]
 name=nginx repo
 baseurl=http://nginx.org/packages/centos/7/$base/
 gpgcheck=0
-enabled=1' > /etc/yum.repos.d/nginx.repo
+enabled=1" > /etc/yum.repos.d/nginx.repo
 
 yum install -y nginx
 
