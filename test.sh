@@ -1,13 +1,25 @@
 #!/bin/bash
 
+base=$basesearch
+
+echo '[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/centos/7/$base/
+gpgcheck=0
+enabled=1' > /etc/yum.repos.d/nginx.repo
+
+yum install -y nginx
+
+systemctl start nginx
+systemctl enable nginx
+
+
 yum install https://repo.ius.io/ius-release-el7.rpm https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm -y
 yum install  python36u python36u-libs python36u-devel python36u-pip python36u-mod_wsgi -y
 yum install git -y
 
 python3.6 -m pip install --upgrade pip
-pip3.6 install django~=2.1.5
 pip3.6 install virtualenvwrapper
-pip3.6 install mysqlclient
 
 firewall-cmd --add-port=80/tcp --zone=public --permanent
 firewall-cmd --reload
@@ -19,27 +31,25 @@ source ~/.bashrc
 mkvirtualenv test
 workon test
 
+pip3.6 install django~=2.1.5
+pip3.6 install mysqlclient
+
 mkdir -p /usr/local/django
-cd /usr/local/django
+alias mo='cd "/usr/local/django"'
+source ~/.bashrc
+mo
 
 git init
 git clone https://github.com/woo3848/djnago_pro.git /usr/local/django
 
 
-echo "[nginx]
-name=nginx repo
-baseurl=http://nginx.org/packages/centos/7/$basearch/
-gpgcheck=0
-enabled=1" > /etc/yum.repos.d/nginx.repo
 
-yum install nginx -y
-systemctl start nginx
-systemctl enable nginx
 
 yum install -y gcc
 pip3.6 install uwsgi
 
 mkidr -p /etc/uwsgi/sites
+
 echo "[uwsgi]
 project = myproject
 username = root
@@ -109,5 +119,5 @@ echo "server{
 systemctl start uwsgi
 systemctl enable uwsgi
 
-# sed -i "s/ALLOWED_HOSTS.*/ALLOWED_HOSTS = [$ips]/" second.txt
+#sed -i "s/ALLOWED_HOSTS.*/ALLOWED_HOSTS = [$ips]/" second.txt
 
