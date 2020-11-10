@@ -16,6 +16,7 @@ systemctl enable nginx
 
 yum install https://repo.ius.io/ius-release-el7.rpm https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm -y
 yum install  python36u python36u-libs python36u-devel python36u-pip python36u-mod_wsgi -y
+yum install mariadb mariadb-server mariadb-devel gcc -y
 
 
 python3.6 -m pip install --upgrade pip
@@ -43,7 +44,6 @@ git init
 git remote add origin https://github.com/woo3848/djnago_pro.git
 git clone https://github.com/woo3848/djnago_pro.git /usr/local/django/
 
-yum install -y gcc
 pip3.6 install uwsgi
 
 mkdir -p /etc/uwsgi/sites
