@@ -36,6 +36,7 @@ pip3.6 install mysqlclient
 alias mo='cd "/usr/local"'
 source ~/.bashrc
 mo
+
 yum -y install git
 
 git init
@@ -96,7 +97,7 @@ systemctl daemon-reload
 ips=`/sbin/ifconfig | grep '\<inet\>' | sed -n '1p' | tr -s ' ' | cut -d ' ' -f3 | cut -d ':' -f2`
 echo "server{
         listen 8000;
-        server_name 192.168.1.101;
+        server_name $ips;
         root /usr/local/victolee/project;
 
         location /static/ {
@@ -116,5 +117,8 @@ systemctl enable nginx
 systemctl start uwsgi
 systemctl enable uwsgi
 
-#sed -i "s/ALLOWED_HOSTS.*/ALLOWED_HOSTS = [$ips]/" second.txt
+sed -i 's/ALLOWED$/ALLOWED_HOST = [*]/g' /usr/local/victolee/project/project/settings.py
+# sed -i'' -r -e "/[찾는패턴],/a\[찾은줄다음줄에삽입할패턴]" [대상파일]
+sed -i'' -r -e "/'STATIC',/a\'STATIC_ROOT = os.path.join(BASE_DIR, 'static')'" /usr/local/victolee/project/project/settings.py
+
 
