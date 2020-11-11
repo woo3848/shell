@@ -109,9 +109,7 @@ echo "server{
                 autoindex on;
                 autoindex_exact_size off;
         }
-}
-
-" > /etc/nginx/conf.d/project.conf
+}" > /etc/nginx/conf.d/project.conf
 systemctl start nginx
 systemctl enable nginx
 
