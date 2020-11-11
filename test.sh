@@ -36,6 +36,7 @@ pip3.6 install mysqlclient
 alias mo='cd "/usr/local"'
 source ~/.bashrc
 mo
+yum -y install git
 
 git init
 git remote add origin https://github.com/woo3848/djnago_pro.git
