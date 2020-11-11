@@ -29,7 +29,7 @@ source ~/.bashrc
 mkvirtualenv test
 workon test
 
-pip3.6 install django~=2.1.5
+pip3.6 install django~=2.1.15
 pip3.6 install mysqlclient
 
 
