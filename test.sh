@@ -10,10 +10,6 @@ enabled=1" > /etc/yum.repos.d/nginx.repo
 
 yum install -y nginx
 
-systemctl start nginx
-systemctl enable nginx
-
-
 yum install https://repo.ius.io/ius-release-el7.rpm https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm -y
 yum install python36u python36u-libs python36u-devel python36u-pip python36u-mod_wsgi -y
 yum install mariadb mariadb-server mariadb-devel gcc -y
@@ -98,24 +94,25 @@ systemctl daemon-reload
 
 ips=`/sbin/ifconfig | grep '\<inet\>' | sed -n '1p' | tr -s ' ' | cut -d ' ' -f3 | cut -d ':' -f2`
 echo "server{
+        listen 8000;
+        server_name 192.168.1.101;
+        root /usr/local/victolee/project;
 
-        listen 80;
-
-        server_name $ips;
-
-
+        location /static/ {
+        alias /usr/local/victolee/project/static/;
+        }
 
         location / {
-
                 include uwsgi_params;
-
                 uwsgi_pass unix:/run/uwsgi/project.sock;
                 autoindex on;
                 autoindex_exact_size off;
-
         }
-
-}" > /etc/nginx/conf.d/project.conf
+}
+~
+" > /etc/nginx/conf.d/project.conf
+systemctl start nginx
+systemctl enable nginx
 
 systemctl start uwsgi
 systemctl enable uwsgi
