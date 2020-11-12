@@ -111,14 +111,23 @@ echo "server{
                 autoindex_exact_size off;
         }
 }" > /etc/nginx/conf.d/project.conf
+
+
+
+# sed -i'' -r -e "/[찾는패턴],/a\[찾은줄다음줄에삽입할패턴]" [대상파일]
+sed -i'' -r -e "/'STATIC',/a\'STATIC_ROOT = os.path.join(BASE_DIR, 'static')'" /usr/local/victolee/project/project/settings.py
+
+alias mov='cd "/victolee/project"'
+source ~/.bashrc
+mov
+
+python3.6 manage.py collectstatic
+
 systemctl start nginx
 systemctl enable nginx
 
 systemctl start uwsgi
 systemctl enable uwsgi
 
-sed -i 's/ALLOWED$/ALLOWED_HOST = [*]/g' /usr/local/victolee/project/project/settings.py
-# sed -i'' -r -e "/[찾는패턴],/a\[찾은줄다음줄에삽입할패턴]" [대상파일]
-sed -i'' -r -e "/'STATIC',/a\'STATIC_ROOT = os.path.join(BASE_DIR, 'static')'" /usr/local/victolee/project/project/settings.py
 
-
+#sed -i "s/ALLOWED$/ALLOWED_HOST = ['$ips']/g" /usr/local/victolee/project/project/settings.py (요 내용이 잘 안먹습니다 ㅠ..)
