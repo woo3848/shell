@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sed -i '7s/enforcing/disabled/' /etc/selinux/config && echo "SELinux is disabled"
+
 base='$basearch'
 
 echo "[nginx]
