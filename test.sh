@@ -133,4 +133,3 @@ python3.6 manage.py collectstatic
 #systemctl enable uwsgi
 
 
-#sed -i "s/ALLOWED$/ALLOWED_HOST = ['$ips']/g" /usr/local/victolee/project/project/settings.py (요 내용이 잘 안먹습니다 ㅠ..)
