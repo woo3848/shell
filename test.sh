@@ -118,7 +118,7 @@ echo -e "server{
 #sed -i'' -r -e "/'STATIC',/a\'STATIC_ROOT = os.path.join(BASE_DIR, 'static')'" /usr/local/victolee/project/project/settings.py
 sed -i'' -r -e "/STATIC/a\STATIC_ROOT = os.path.join(BASE_DIR, 'static')/" /usr/local/victolee/project/project/settings.py
 
-alias mov='cd "~victolee/project"'
+alias mov='cd "victolee/project"'
 source ~/.bashrc
 mov
 
