@@ -95,7 +95,7 @@ WantedBy=multi-user.target" > /etc/systemd/system/uwsgi.service
 systemctl daemon-reload
 
 ips=`/sbin/ifconfig | grep '\<inet\>' | sed -n '1p' | tr -s ' ' | cut -d ' ' -f3 | cut -d ':' -f2`
-echo - "server{
+echo -e "server{
         listen 8000;
         server_name $ips;
         root /usr/local/victolee/project;\n
@@ -117,11 +117,12 @@ echo - "server{
 # sed -i'' -r -e "/[찾는패턴],/a\[찾은줄다음줄에삽입할패턴]" [대상파일]
 #sed -i'' -r -e "/'STATIC',/a\'STATIC_ROOT = os.path.join(BASE_DIR, 'static')'" /usr/local/victolee/project/project/settings.py
 sed -i'' -r -e "/STATIC/a\STATIC_ROOT = os.path.join(BASE_DIR, 'static')/" /usr/local/victolee/project/project/settings.py
-#alias mov='cd "~victolee/project"'
-#source ~/.bashrc
-#mov
 
-#python3.6 manage.py collectstatic
+alias mov='cd "~victolee/project"'
+source ~/.bashrc
+mov
+
+python3.6 manage.py collectstatic
 
 #systemctl start nginx
 #systemctl enable nginx
