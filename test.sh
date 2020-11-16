@@ -98,11 +98,11 @@ ips=`/sbin/ifconfig | grep '\<inet\>' | sed -n '1p' | tr -s ' ' | cut -d ' ' -f3
 echo "server{
         listen 8000;
         server_name $ips;
-        root /usr/local/victolee/project;
+        root /usr/local/victolee/project;\n
 
         location /static/ {
         alias /usr/local/victolee/project/static/;
-        }
+        }\n
 
         location / {
                 include uwsgi_params;
