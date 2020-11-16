@@ -116,7 +116,7 @@ echo -e "server{
 
 # sed -i'' -r -e "/[찾는패턴],/a\[찾은줄다음줄에삽입할패턴]" [대상파일]
 #sed -i'' -r -e "/'STATIC',/a\'STATIC_ROOT = os.path.join(BASE_DIR, 'static')'" /usr/local/victolee/project/project/settings.py
-sed -i'' -r -e "/STATIC/a\STATIC_ROOT = os.path.join(BASE_DIR, 'static')/" /usr/local/victolee/project/project/settings.py
+sed -i'' -r -e "/STATIC/a\STATIC_ROOT = os.path.join(BASE_DIR, 'static')" /usr/local/victolee/project/project/settings.py
 
 alias mov='cd "victolee/project"'
 source ~/.bashrc
