@@ -95,7 +95,7 @@ WantedBy=multi-user.target" > /etc/systemd/system/uwsgi.service
 systemctl daemon-reload
 
 ips=`/sbin/ifconfig | grep '\<inet\>' | sed -n '1p' | tr -s ' ' | cut -d ' ' -f3 | cut -d ':' -f2`
-echo "server{
+echo - "server{
         listen 8000;
         server_name $ips;
         root /usr/local/victolee/project;\n
